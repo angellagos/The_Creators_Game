@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://dpn282vwtwacc"]
+
+[ext_resource type="Script" path="res://personaje/personaje.gd" id="1_x0ldx"]
+[ext_resource type="Texture2D" uid="uid://c3leqcqgpp8pb" path="res://assets/kenney/character/Dexter1.png" id="2_n8kql"]
+[ext_resource type="Texture2D" uid="uid://bpmjiegotxc2" path="res://assets/kenney/character/Dxtermove1.png" id="3_hvx5p"]
+[ext_resource type="Texture2D" uid="uid://brx11tfccuir3" path="res://assets/kenney/character/Dxtermove2.png" id="4_npaoj"]
+[ext_resource type="Texture2D" uid="uid://b8xwa02vxy4vg" path="res://assets/kenney/character/Dxtermove3.png" id="5_1hj42"]
+[ext_resource type="Texture2D" uid="uid://tcqvfmvm4pwe" path="res://assets/kenney/character/Dxtermove4.png" id="6_0cdfj"]
+[ext_resource type="Texture2D" uid="uid://w4hq5slcj4aa" path="res://assets/kenney/character/Dxtermove5.png" id="7_eo4ll"]
+[ext_resource type="Texture2D" uid="uid://bko6jj3ov8p8t" path="res://assets/kenney/character/Dxtermove6.png" id="8_plejr"]
+[ext_resource type="Texture2D" uid="uid://wh8yv3nvi10m" path="res://assets/kenney/character/Dxtermove7.png" id="9_ftlra"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fryba"]
+radius = 36.0
+height = 188.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfok0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n8kql")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hvx5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_npaoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1hj42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0cdfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_eo4ll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_plejr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ftlra")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Personaje" type="CharacterBody2D" node_paths=PackedStringArray("main_animation")]
+script = ExtResource("1_x0ldx")
+gravity = 560
+jump_speed = 280
+speed = 150
+main_animation = NodePath("Animation")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n8kql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("CapsuleShape2D_fryba")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rfok0")
+animation = &"idle"
+frame_progress = 0.79191
